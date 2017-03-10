@@ -1,0 +1,7 @@
+gs-spring-boot-docker:
+    build: ./container-restaurant
+    command: bash -c "mvn package && java -jar target/*.jar"
+    volumes:
+        - "./container-restaurant/my-app:/my-app"
+    ports:
+        - "8080:8080"

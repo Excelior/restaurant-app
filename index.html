@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Google places</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div style="width:660px; margin:50px auto">
+    <div style="width:300px;display: inline-block">
+        <p> Voir les restaurants d'une zone ? </p>
+        <div>
+            <label for="latitude">Latitude (ex : 4.2) :</label>
+            <input type="text" id="latitude" name="latitude">
+        </div>
+        <div>
+            <label for="longitude">Longitude (ex : 8.1): </label>
+            <input type="text" id="longitude" name="longitude">
+        </div>
+        <p id="errorMessageRestaurants"></p>
+        <button onclick="goToRestaurants()">C'est parti !</button>
+    </div>
+    <div style="width:300px;display: inline-block">
+        <p> Voir un restaurant en particulier ? </p>
+        <div>
+            <label for="placeId">PlaceId :</label>
+            <input type="text" id="placeId" name="placeId">
+        </div>
+        <p id="errorMessagePlaceId"></p>
+        <button onclick="goToPlace()">C'est parti !</button>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    function goToRestaurants(){
+        var lat = document.getElementById("latitude").value;
+        var long = document.getElementById("longitude").value;
+
+        if ((lat != "" && long != ""))
+            window.location.href = "/restaurant?lat=" + lat + "&lng=" + long;
+
+        else
+            document.getElementById("errorMessageRestaurants").textContent =
+                "Veuillez sélectionner une latitude et une longitude valide"
+    }
+
+    function goToPlace(){
+        var placeId = document.getElementById("placeId").value;
+
+        if (placeId != "")
+            window.location.href = "/restaurant/" + placeId;
+
+        else
+            document.getElementById("errorMessagePlaceId").textContent =
+                "Veuillez sélectionner une placeId"
+    }
+
+</script>
+
+<!--#2 /resto/id/comment ajout commentaires dans un tab js...-->
